@@ -1,0 +1,52 @@
+
+def calculate_letter_grade(average):
+    if average >= 90:
+        return 'A', 4.0
+    elif average >= 80:
+        return 'B', 3.0
+    elif average >= 70:
+        return 'C', 2.0
+    elif average >= 60:
+        return 'D', 1.0
+    else:
+        return 'F', 0.0
+
+
+def input_grades():
+    grades = {}
+    num_subjects = int(input("Enter the number of subjects: "))
+    
+    for _ in range(num_subjects):
+        subject = input("Enter the subject name: ")
+        grade = float(input(f"Enter the grade for {subject}: "))
+        grades[subject] = grade
+    
+    return grades
+
+
+def calculate_average(grades):
+    return sum(grades.values()) / len(grades)
+
+
+def main():
+    print("Student Grades Management Program")
+    
+
+    grades = input_grades()
+    
+
+    average_grade = calculate_average(grades)
+    
+    letter_grade, gpa = calculate_letter_grade(average_grade)
+    
+
+    print("\nGrades Summary:")
+    for subject, grade in grades.items():
+        print(f"{subject}: {grade}")
+    
+    print(f"\nAverage Grade: {average_grade:.2f}")
+    print(f"Letter Grade: {letter_grade}")
+    print(f"GPA: {gpa:.2f}")
+
+if __name__ == "__main__":
+    main()
